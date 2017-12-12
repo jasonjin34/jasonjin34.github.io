@@ -64,16 +64,7 @@
                 })
             }
         }
-        function refreshfinish() {
-            var length_finishtasks = aFinishtask.length;
-            var text = "<ol>";
-            text += "<p><b>Name &nbsp &nbsp Type  &nbsp &nbsp &nbsp  Finish Time </b> </p>";
-            for (var i = 0; i < length_finishtasks; i++) {
-                text += "<li> &nbsp " + aFinishtask[i].output() + "</li>";
-            }
-            text += "</ol>";
-            document.getElementById("finish_tasks").innerHTML = text;
-        }
+
         //show the task element
         $(document).ready(function () {
             $("#bShow").click(function () {
@@ -91,7 +82,6 @@
                     aFinishtask.push(new pTolistElement(name, "normal", "finish", new Date().toDateString()));
                     console.log("test click");// click test function
                     $("#" + idstring).remove();
-                    refreshfinish();
                 }
                 idnumber++;
             })
