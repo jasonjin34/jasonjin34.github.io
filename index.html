@@ -34,6 +34,12 @@
 
         //enter key function for input data
         function fEnterkey(event) {
+            if($("#input_list").val() == "") 
+            {
+                alert("please enter the valid tasks name\n task name can not be empty");
+                return;
+            }
+
             var x = event.key;
             if (x == "Enter" && $("#input_list").val() != "") {
                 $(document).ready(function () {
@@ -67,13 +73,13 @@
 
         //show the task element
         $(document).ready(function () {
-            if($("#input_list").val() != "")
-            {
-                $("#bShow").click(function () {
-                alert("Value: " + $("#input_list").val());
-            });
             //push task in the list bottom
             $("#bAdd").click(function () {
+                if($("#input_list").val() == "") 
+            {
+                alert("please enter the valid tasks name\n task name can not be empty");
+                return;
+            }
                 var idstring = "li" + idnumber;// generate new id
                 $("#to_do_list").append("<li id=" + idstring + ">" + $("#input_list").val() + "</li>");
                 var name = $('#input_list').val();
@@ -99,6 +105,11 @@
             })
             //add from the top
             $("#bAdd_top").click(function () {
+                if($("#input_list").val() == "") 
+            {
+                alert("please enter the valid tasks name \n task name can not be empty");
+                return;
+            }
                 var idstring = "li" + idnumber;// generate new id
                 var inputtext = document.createElement("li");
                 inputtext.id = idstring;
@@ -133,7 +144,6 @@
                 text += "</ol>";
                 document.getElementById("finish_tasks").innerHTML = text;
             })
-            }
         });
 
     </script>
