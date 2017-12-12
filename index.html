@@ -14,7 +14,7 @@
             left: 10em;
         }
     </style>
-
+l
     <script>
         var idnumber = 0;
         //todolistelement prototype
@@ -34,12 +34,6 @@
 
         //enter key function for input data
         function fEnterkey(event) {
-            if($("#input_list").val() == "") 
-            {
-                alert("please enter the valid tasks name\n task name can not be empty");
-                return;
-            }
-
             var x = event.key;
             if (x == "Enter" && $("#input_list").val() != "") {
                 $(document).ready(function () {
@@ -68,6 +62,11 @@
                     }
                     idnumber++;
                 })
+            }
+            else if($("#input_list").val() == "" && x == "Enter" ) 
+            {
+                alert("please enter the valid tasks name\n task name can not be empty");
+                return;
             }
         }
 
