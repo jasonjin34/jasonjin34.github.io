@@ -32,7 +32,7 @@
 
 <body>
     <script>
-        var sCloseiconbutton = "<button id=\"sClose\" type=\"button\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\"> <span style=\"cursor:pointer\"> &times; </span></span></button>";
+        var sCloseiconbutton = "<button type=\"button\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\"> <span style=\"cursor:pointer\"> &times; </span></span></button>";
 
         $(document).ready(function () {
             if (localStorage.getItem("idnumber") == null) {
@@ -53,7 +53,7 @@
                 var printoutlist = JSON.parse(localStorage.getItem("todolist"))
                 for (var i = 0; i < printoutlist.length; i++) {
                     var listID = printoutlist[i].taskid;
-                    $("#to_do_list").append("<li class=\"list-group-item\" id=" + listID + ">" + printoutlist[i].taskname + sCloseiconbutton + "</li>");
+                    $("#to_do_list").append("<li class=\"list-group-item\" id=" + listID + ">" + "<span style=\"cursor:pointer\">" + printoutlist[i].taskname + sCloseiconbutton + "</span> </li>");
                 }
             }
 
