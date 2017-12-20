@@ -33,6 +33,11 @@
 <body>
     <script>
         var sCloseiconbutton = "<button type=\"button\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\"> <span style=\"cursor:pointer\"> &times; </span></span></button>";
+        function fSCloseicon(id){
+            var text1 = "<button id=button";
+            var text2 = " type=\"button\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\"> <span style=\"cursor:pointer\"> &times; </span></span></button>";
+            return text1 + id + text2;
+        }
 
         $(document).ready(function () {
             if (localStorage.getItem("idnumber") == null) {
@@ -78,13 +83,13 @@
                 if (event.which == 13 && $("#input_list").val()) {
                     var IDlistelement = "li" + idnumber;
 
-                    $("#to_do_list").append("<li class=\"list-group-item\" id=" + IDlistelement + ">" + "<span style=\"cursor:pointer\">" + $("#input_list").val() + sCloseiconbutton + "</span>" +"</li>");
+                    $("#to_do_list").append("<li class=\"list-group-item\" id=" + IDlistelement + ">" + "<span style=\"cursor:pointer\">" + $("#input_list").val() + sCloseiconbutton + "</span>" + "</li>");
                     $("#" + IDlistelement).css('display', 'none');
                     $("#" + IDlistelement).slideDown(500, 'swing');
 
                     var Array_tasks;
                     if (JSON.parse(localStorage.getItem("todolist")) != null) Array_tasks = JSON.parse(localStorage.getItem("todolist"));
-                    else  Array_tasks = new Array;
+                    else Array_tasks = new Array;
 
                     Array_tasks.push(new pTolistElement(IDlistelement, $("#input_list").val()));
                     localStorage.setItem("todolist", JSON.stringify(Array_tasks));
@@ -98,7 +103,7 @@
                 }
             })
 
-            $("#to_do_list").on("click", "li", function (event) {
+            $("#to_do_list").on("dblclick", "li", function (event) {
                 event.preventDefault();
                 //test for eventlistener and get the li id
                 console.log($(this).attr("id"))
@@ -174,6 +179,23 @@
             opacity: 1;
         }
     </style>
+    <!-- setup modal for edit the task name -->
+    <div id="taskedit" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit To Do List Task</h4>
+                </div>
+                <div class="modal-body">
+                    <input id="input_edittask" value="" type="input_text" placeholder="type the new task">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dimiss="modal"> Close </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container">
         <!-- Toggleable Dynamic Tabs -->
@@ -226,8 +248,8 @@
                     <br>
 
                     <div class="card" style="width:auto;">
-                            <ul class="list-group list-group-flush" id="to_do_list">
-                            </ul>
+                        <ul class="list-group list-group-flush" id="to_do_list">
+                        </ul>
                     </div>
 
                 </div>
@@ -242,7 +264,7 @@
                         <h4 class="card-title"> &nbsp Finished Tasks Lists
                             <font size="3"> &nbsp
                                 <button id="button_finish" size="5" type="button" class="btn btn-outline-primary">
-                                    <span style="cursor:pointer">Clear Finished List</span>
+                                        <span style="cursor:pointer">Clear Finished List</span>
                                 </button>
                             </font>
                         </h4>
