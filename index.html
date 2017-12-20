@@ -61,7 +61,7 @@
             if (aFinishtask != null) {
                 for (var i = 0; i < aFinishtask.length; i++) {
                     if (aFinishtask.length == 0) break;
-                    $("#finish_tasks").append("<li class=\"list-group-item\">" + aFinishtask[i].slice(0, -1) + "</li>");
+                    $("#finish_tasks").append("<li class=\"list-group-item\">" + aFinishtask[i].slice(0, -4) + "</li>");
                 }
             }
             else if (aFinishtask == null) {
@@ -226,10 +226,8 @@
                     <br>
 
                     <div class="card" style="width:auto;">
-                        <label class="form-check-label">
                             <ul class="list-group list-group-flush" id="to_do_list">
                             </ul>
-                        </label>
                     </div>
 
                 </div>
