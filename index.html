@@ -30,7 +30,7 @@
 
     <!-- jQuery library -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src="jquery.ui.touch-punch.min.js"></script>
+    <script src="jquery.ui.touch-punch.min.js"></script>
 
 </head>
 
@@ -49,7 +49,6 @@
         .list-group-item:hover {
             background-color: #EAF3FA;
         }
-        
     </style>
     <script>
         $(document).ready(function () {
@@ -130,14 +129,16 @@
                 localStorage.setItem("todolist", JSON.stringify(todo_list));
                 localStorage.setItem("finishedlist", JSON.stringify(aFinishtask));
             })
-            
+
             /*modal function for editing the task detail*/
             var edittaskID = new String; // set up global variable for edittaskID 
             //trigger the edit event and get edittaskID
             $("#to_do_list").on("dblclick", "li", function (event) {
                 event.preventDefault();
-                $("#taskedit").modal('toggle');
                 edittaskID = $(this).attr("id");
+                $("#input_edittask").val($("#" + edittaskID).text().slice(0, -4));
+                // $("#input_edittask").attr("placeholder", $("#" + edittaskID).text().slice(0, -4));
+                $("#taskedit").modal('toggle');
             })
             //edit function
             function edittask() {
@@ -177,7 +178,6 @@
             $("#finish_tasks").sortable({ axis: "y", containment: "#finish_list_tab" });
 
 
-
         })
     </script>
     <!-- setup modal for edit the task name -->
@@ -189,7 +189,7 @@
                     <h4 class="modal-title">Edit To Do List Task</h4>
                 </div>
                 <div class="modal-body">
-                    <input id="input_edittask" value="" type="input_text" placeholder="type the new task">
+                    <input id="input_edittask" value="" type="input_text" placeholder=" ">
                 </div>
                 <div class="modal-footer">
                     <button id="button_modal" type="button" class="btn btn-primary" data-dimiss="modal"> Confirm </button>
